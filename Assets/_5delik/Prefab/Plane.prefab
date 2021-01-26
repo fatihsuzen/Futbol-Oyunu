@@ -113,6 +113,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4946824267852714925, guid: c6f817b8585003e489a44521b2dbd452,
+        type: 3}
+      propertyPath: m_TagString
+      value: zemin
+      objectReference: {fileID: 0}
     - target: {fileID: 7090058486560440370, guid: c6f817b8585003e489a44521b2dbd452,
         type: 3}
       propertyPath: m_Name
@@ -122,6 +127,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7984150248619197737, guid: c6f817b8585003e489a44521b2dbd452,
+        type: 3}
+      propertyPath: m_Convex
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8529243326030934698, guid: c6f817b8585003e489a44521b2dbd452,
         type: 3}
