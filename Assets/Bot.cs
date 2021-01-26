@@ -6,6 +6,7 @@ using DG.Tweening;
 public class Bot : MonoBehaviour
 {
     public Vector3 target;
+    public GameObject Player;
     public Rigidbody rb;
     public GameObject Camera;
     public float speed=10f;
@@ -44,7 +45,7 @@ public class Bot : MonoBehaviour
         }
     }
     void OnEnable()
-    {
+    {   transform.rotation = Quaternion.Euler(0, 0, 0);
         Temp = transform.position;
         bikere = true;
         Camera.transform.DOMove(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z - 1.63f), 2f).OnComplete(() => bikere = false);
@@ -100,9 +101,23 @@ public class Bot : MonoBehaviour
     }
     void TurnPlayer()
     {   
-        transform.rotation = Quaternion.Euler(0,0,0);
-        GameObject.Find("Player").GetComponent<yönünüayarla>().enabled = true;              
-        gameObject.GetComponent<Bot>().enabled = false;
+        if(!GameController.botInHole)
+        {
+            transform.rotation = Quaternion.Euler(0,0,0);
+            GameObject.Find("Player").GetComponent<yönünüayarla>().enabled = true;              
+            gameObject.GetComponent<Bot>().enabled = false;
+        }
+        else
+        {   
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            Temp = transform.position;
+            bikere = true;
+            Camera.transform.DOMove(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z - 1.63f), 2f).OnComplete(() => bikere = false);
+            Camera.transform.parent = transform;
+            Invoke("SimulatedShotOne",3f);
+            GameController.botInHole=false;
+        }
+        
     }   
     public void Calculate(int difficulty)
     {

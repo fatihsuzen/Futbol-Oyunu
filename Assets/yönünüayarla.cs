@@ -65,8 +65,7 @@ public class yönünüayarla : MonoBehaviour
     }
     void OnDisable()
     {   
-        transform.rotation = Quaternion.Euler(0, 0, 0);
-        CancelInvoke();
+
     }
     private void Start()
     {   
@@ -148,8 +147,34 @@ public class yönünüayarla : MonoBehaviour
         }
         else
         {
-             SceneManager.firstShot = true;     
+         SceneManager.firstShot = true; 
+         GameController.playerInHole=false;
+
+
+           if (a != 0)
+        {
+            bikere = true;
+            Camera.transform.DOMove(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z - 1.63f), 2f).OnComplete(() => bikere = false);
         }
+        else
+        {
+            a++;
+        }       
+        sayac = 0;
+        zaman = 0.5f;
+        beklemesüresi=0;
+        bekleme = 0.2f;
+        x = -1;
+        p = 0;
+        trbool = true;
+        yönet = true;
+        mousex = 0;
+        mousey = 0;
+        SceneManager.firstShot = true;
+        Way.SetActive(true);
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        
         
     }
     public void Calculate()
